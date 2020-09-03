@@ -1,6 +1,7 @@
 import React from 'react'
+import {Card} from './index'
+
 import Grid from '@material-ui/core/Grid'
-import Card from '@material-ui/core/Card'
 import {makeStyles} from '@material-ui/core/styles';
 
 import '../styles/app.sass'
@@ -11,25 +12,18 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "space-around",
       alignItems: "center",
       flexWrap: "wrap"
-    },
-    card: {
-      width: '250px',
-      height: '300px',
-      marginTop: '30px'
     }
 }))
 
-function Carts() {
+function Carts(props) {
     const classes = useStyles();
-
+    const cryptList = props.value.map((crypt) => 
+        <Card value={crypt} key={crypt.CoinInfo.Id}/>
+    )
+    
     return (
         <Grid container className={classes.grid}>
-          <Card className={classes.card} spacing={3}/>
-          <Card className={classes.card} spacing={3}/>
-          <Card className={classes.card} spacing={3}/>
-          <Card className={classes.card} spacing={3}/>
-          <Card className={classes.card} spacing={3}/>
-          <Card className={classes.card} spacing={3}/>
+            {cryptList}
         </Grid>
     )
 }
