@@ -1,61 +1,45 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 
-import {setCrypt as setCryptAction} from './redux/actions/crypto'
+import {fetchCrypto} from './redux/actions/crypto'
 
 import {Carts} from './components'
 import {Header} from './components'
 import {SortBlock} from './components'
 
 import Container from '@material-ui/core/Container'
-import axios from 'axios'
 
 
 import './styles/app.sass'
 
+const sortItems = [
+  {name: 'Все', type: 'all'},
+  {name: 'Цене', type: 'price'},
+  {name: 'Названию', type: 'alphabet'}
+]
 
-class App extends React.Component {
-  // React.useEffect(() => {
-  //   axios.get('https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=55&tsym=USD').then(({data}) => {
-  //     const crypt = data.Data
-  //     setCrypto(crypt)
-  //   })
-  // }, [])
+function App() {
+  const dispatch = useDispatch()
+  const filters = React.useSelector(({filters}) => filters)
+  console.log(filters)
 
-  // console.log('отрисовывается')
+  React.useEffect(() => {
+    dispatch(fetchCrypto())
+  }, [dispatch])
 
-  componentDidMount() {
-    axios.get('https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=55&tsym=USD').then(({data}) => {
-      const cryptData = data.Data
-      this.props.setCryptAction(cryptData)
-    })
-  }
-
-  render() {
-    console.log(this.props)
-    return (
-      <div className="App">
-        <Container>
-          <Header/>
-          <SortBlock/>
-          <Carts value={this.props.items}/>
-        </Container>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    items: state.crypto.items,
-    filters: state.filters
-  }
-}
-
-const mapDispatchToProps = {
-  setCryptAction
+  return (
+    <div className="App">
+      <Container>
+        <Header/>
+        <SortBlock items={sortItems} onClickSortType/>
+        <Carts/>
+      </Container>
+    </div>
+  );
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+export default App;
