@@ -3,8 +3,7 @@
 
 Разработка на React, Redux, Material UI. 
 
-![alt text](src/img/react+redux.png)
-![alt text](src/img/materialUi.png)
+![alt text](src/img/techno.png)
 
 
 

@@ -1,10 +1,15 @@
 import React from 'react'
 import {Card} from './index'
 
+
+import {useSelector} from 'react-redux'
+
 import Grid from '@material-ui/core/Grid'
 import {makeStyles} from '@material-ui/core/styles';
 
 import '../styles/app.sass'
+
+
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -15,17 +20,22 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Carts(props) {
+function Carts() {
     const classes = useStyles();
-    const cryptList = props.value.map((crypt) => 
-        <Card value={crypt} key={crypt.CoinInfo.Id}/>
-    )
-    
+
+
+    const {items} = useSelector(({crypto, filters}) => {
+        return {
+          items: crypto.items,
+          bySort: filters.bySort
+        }
+      })
     return (
         <Grid container className={classes.grid}>
-            {cryptList}
+            {items.map((crypt) => <Card value={crypt} isLoaded={true} key={crypt.CoinInfo.Id}/>)}
         </Grid>
     )
 }
+
 
 export default Carts
