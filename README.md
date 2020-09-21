@@ -3,8 +3,8 @@
 
 Разработка на React, MobX, Material UI. 
 
-![alt text](src/img/techno.png)
+![alt text](src/img/react-redux.png)
 
 
 
-1. Начало верстки на Material UI и разбиение на компоненты.
+Пока идет Разработка

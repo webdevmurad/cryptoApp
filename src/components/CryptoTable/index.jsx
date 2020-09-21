@@ -6,11 +6,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import PropTypes from 'prop-types';
 
 
 const CryptoTable = ({items, classes}) => {
-
+    
     return (
         <TableContainer className={classes.bitcoinTable} component={Paper}>
             <Table className={classes.table} aria-label="simple table">
@@ -25,20 +25,24 @@ const CryptoTable = ({items, classes}) => {
                 </TableHead>
                 <TableBody>
                     {!items.length ? "Загрузка..." : items.map((coin) => (
-                    <TableRow key={coin.name}>
-                        <TableCell component="th" scope="row">
-                        <img className={classes.cryptoIcon} src={coin.imageUrl} alt="cryptoImg"/>
-                        </TableCell>
-                        <TableCell align="left">{coin.name}</TableCell>
-                        <TableCell align="left">{coin.fullName}</TableCell>
-                        <TableCell align="left">$ {coin.price}</TableCell>
-                        <TableCell align="left">$ {coin.volume24Hour}</TableCell>
-                    </TableRow>
+                        <TableRow key={coin.name}>
+                            <TableCell component="th" scope="row">
+                            <img className={classes.cryptoIcon} src={coin.imageUrl} alt="cryptoImg"/>
+                            </TableCell>
+                            <TableCell align="left">{coin.name}</TableCell>
+                            <TableCell align="left">{coin.fullName}</TableCell>
+                            <TableCell align="left">$ {coin.price}</TableCell>
+                            <TableCell align="left">$ {coin.volume24Hour}</TableCell>
+                        </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
     )
+}
+
+CryptoTable.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default CryptoTable;
