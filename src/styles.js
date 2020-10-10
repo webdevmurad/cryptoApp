@@ -10,9 +10,15 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.text.secondary,
     },
     cryptoInputWrap: {
-    
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
         marginTop: 20,
         marginBottom: 20
+    },
+    cryptoImg: {
+        width: 100,
+        height: 100
     },
     currencyInput: {
         minWidth: 'calc(70% - 10px)',

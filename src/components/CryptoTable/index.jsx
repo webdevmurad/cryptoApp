@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 
 
 const CryptoTable = ({items, classes}) => {
-    
+
     return (
         <TableContainer className={classes.bitcoinTable} component={Paper}>
             <Table className={classes.table} aria-label="simple table">
@@ -25,7 +25,8 @@ const CryptoTable = ({items, classes}) => {
                 </TableHead>
                 <TableBody>
                     {!items.length ? "Загрузка..." : items.map((coin) => (
-                        <TableRow key={coin.name}>
+                        
+                        <TableRow key={coin.volume24Hour}>
                             <TableCell component="th" scope="row">
                             <img className={classes.cryptoIcon} src={coin.imageUrl} alt="cryptoImg"/>
                             </TableCell>
@@ -42,7 +43,13 @@ const CryptoTable = ({items, classes}) => {
 }
 
 CryptoTable.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.object).isRequired
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    classes: PropTypes.object
+}
+
+CryptoTable.defaultProps = {
+    items: {},
+    classes: {}
 }
 
 export default CryptoTable;
