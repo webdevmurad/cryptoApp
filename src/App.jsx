@@ -27,7 +27,7 @@ function App({crypto, isReady, setCrypto, setFilter}) {
               name: coin.CoinInfo.Name,
               fullName: coin.CoinInfo.FullName,
               imageUrl: `https://www.cryptocompare.com${coin.CoinInfo.ImageUrl}`,
-              price: parseInt(coin.RAW.USD.PRICE.toFixed(2)),
+              price: Number(coin.RAW.USD.PRICE.toFixed(2)),
               volume24Hour: parseInt(coin.RAW.USD.VOLUME24HOUR)
           }
           return obj

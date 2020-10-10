@@ -1,10 +1,13 @@
 <!-- https://api.coincap.io/v2/assets -->
 
 
-Разработка на React, MobX, Material UI. 
 
-![alt text](src/img/react-redux.png)
+Разработка на React, Redux, Material UI. 
 
+![alt text](public/stek.png)
 
+В проекте также применены библиотеки lodash , axios, propTypes. 
 
-Пока идет Разработка
+Ссылка на приложение :
+
+https://webdevmurad.github.io/cryptoApp/
